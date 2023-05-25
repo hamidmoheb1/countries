@@ -1,0 +1,52 @@
+.dropdown {
+    width: 170px;
+    padding: 20px;
+    position: relative;
+    border-radius: 4px;
+    background: var(--headerBg-hex);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02),0px 3.1px 5.3px rgba(0, 0, 0, 0.028),0px 5.8px 10px rgba(0, 0, 0, 0.035),0px 10.3px 17.9px rgba(0, 0, 0, 0.042),0px 19.2px 33.4px rgba(0, 0, 0, 0.05),0px 46px 80px rgba(0, 0, 0, 0.07);
+}
+
+.menu {
+    left: 0;
+    width: 170px;
+    margin: 27px 0;
+    overflow: hidden;
+    padding: 15px 20px;
+    border-radius: 4px;
+    position: absolute;
+    list-style-type: none;
+    background-color: var(--headerBg-hex);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02),0px 3.1px 5.3px rgba(0, 0, 0, 0.028),0px 5.8px 10px rgba(0, 0, 0, 0.035),0px 10.3px 17.9px rgba(0, 0, 0, 0.042),0px 19.2px 33.4px rgba(0, 0, 0, 0.05),0px 46px 80px rgba(0, 0, 0, 0.07);
+}
+
+.menu > li {
+    margin: 0;
+    background-color: var(--headerBg-hex);
+}
+
+.menu > li:hover {
+    background-color: var(--bg-hex);
+}
+
+.menu > li > button {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 5px;
+    margin: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+.dropdown-trigger {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    color: var(--ph-hex);
+    justify-content: space-between;
+}
