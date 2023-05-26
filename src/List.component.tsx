@@ -110,6 +110,47 @@ const List = () => {
        setCountries(res.data);
      }
   }
+
+  const sortCountries = (sortType: string) => {
+    switch (sortType) {
+      case "populationD": {
+        setCountries(countries.slice(0).sort((a, b) => b.population - a.population));
+        break;
+      }
+      case "populationA": {
+        setCountries(countries.slice(0).sort((a, b) => a.population - b.population));
+        break;
+      }
+      case "countryNameD": {
+        setCountries(countries.slice(0).sort(function (a, b) {
+          if (a.name.common < b.name.common) {
+            return -1;
+          }
+          if (a.name.common > b.name.common) {
+            return 1;
+          }
+          return 0;
+        }));
+        break;
+      }
+      case "countryNameA": {
+        setCountries(countries.slice(0).sort(function (b, a) {
+          if (a.name.common < b.name.common) {
+            return -1;
+          }
+          if (a.name.common > b.name.common) {
+            return 1;
+          }
+          return 0;
+        }));
+        break;
+      }
+    }
+  }
+
+  useEffect(() => {
+    console.log(countries)
+  }, [countries])
   const getCountriesByRegion = async (regionName: string) => {
     const res = await api.get(`region/${regionName}`);
     if(res.data) {
@@ -150,6 +191,19 @@ const List = () => {
               <button style={classes.text} onClick={() => handleSelectFilter("Asia")}>Asia</button>,
               <button style={classes.text} onClick={() => handleSelectFilter("Europe")}>Europe</button>,
               <button style={classes.text} onClick={() => handleSelectFilter("Oceania")}>Oceania</button>,
+            ]}
+          />
+        </div>
+        <div>
+          <Dropdown
+            trigger={<div className="dropdown-trigger">{selectedFilter === "" ? "Sort By ..." : selectedFilter }
+              <FontAwesomeIcon icon={faChevronDown} style={classes.text}/>
+            </div>}
+            menu={[
+              <button style={classes.text} onClick={() => sortCountries("populationA")}>Population Ascending</button>,
+              <button style={classes.text} onClick={() => sortCountries("populationD")}>Population Descending</button>,
+              <button style={classes.text} onClick={() => sortCountries("countryNameA")}>Country Name Ascending</button>,
+              <button style={classes.text} onClick={() => sortCountries("countryNameD")}>Country Name Descending</button>,
             ]}
           />
         </div>

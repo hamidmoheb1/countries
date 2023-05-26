@@ -1,7 +1,7 @@
 import './App.css'
 import Header from "./Header.component";
 import List from "./List.component";
-import React, {createContext, useState} from "react";
+import {createContext, useState} from "react";
 import {
   createBrowserRouter,
   RouterProvider,
